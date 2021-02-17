@@ -153,3 +153,28 @@ class Solution {
         return ans;
     }
 }
+
+// Given an array nums of integers, 
+// return how many of them contain an even number of digits.
+
+class Solution {
+    
+    public boolean isEven (int num) {
+         int count = 0;
+       while(num != 0) {
+           count++;
+           num = num /10;
+       }
+        return count % 2 ==0;
+    }
+    
+    public int findNumbers(int[] nums) {
+       int res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (isEven(nums[i])) {
+                res++;
+            }
+        }
+        return res;
+    }
+}
