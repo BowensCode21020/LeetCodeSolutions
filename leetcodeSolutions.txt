@@ -241,3 +241,27 @@ class Solution {
         return count;
     }
 }
+
+// Ugly Number haha
+
+// Write a program to check whether a given number is an ugly number.
+
+// Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
+
+class Solution {
+    
+    private static final int[] UGLY = {2, 3, 5};
+
+    public boolean isUgly(int num) {
+        if (num == 0) return false;
+        if (num == 1) return true;
+        
+        for (int i = 0; i < UGLY.length; i++) {
+            if (num % UGLY[i] == 0) {
+                num = num / UGLY[i];
+                return isUgly(num);
+            }
+        }
+        return false;
+    }
+}
