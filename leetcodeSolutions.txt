@@ -478,3 +478,38 @@ class Solution {
     }
 }
 
+// Given a string s and an integer k.
+
+// Return the maximum number of vowel letters in any substring of s with length k.
+
+// Vowel letters in English are (a, e, i, o, u).
+
+class Solution {
+    public boolean isVowelValid(char v) {
+        return ( v == 'a' || v == 'e' || v == 'i' || v == 'o' || v =='u');
+    }
+    
+    public int maxVowels(String s, int k) {
+        if (s.length() < k) {
+            return 0;
+        }
+        int max = 0, n = s.length(), count = 0;
+        for (int i = 0; i < k; i++) {
+            if (isVowelValid(s.charAt(i))) {
+                count++;
+            }
+        }
+        max = count;
+        
+        for (int i = k; i < n; i++) {
+            if (isVowelValid(s.charAt(i - k))) {
+                count--;
+            }
+            if (isVowelValid(s.charAt(i))) {
+                count++;
+            }
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+}
