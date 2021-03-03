@@ -592,3 +592,21 @@ class Solution {
     }
     
 }
+
+// Write a program to count the number of days between two dates.
+
+// The two dates are given as strings, 
+// their format is YYYY-MM-DD as shown in the examples.
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+class Solution {
+    public int daysBetweenDates(String date1, String date2) {
+        LocalDate date1Format = LocalDate.parse(date1);
+        LocalDate date2Format = LocalDate.parse(date2);
+        long noDaysBetween = ChronoUnit.DAYS.between(date1Format, date2Format);
+        int iNo = (int) Math.abs(noDaysBetween);
+        return iNo;
+    }
+}
