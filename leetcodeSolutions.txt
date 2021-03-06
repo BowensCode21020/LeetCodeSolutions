@@ -610,3 +610,20 @@ class Solution {
         return iNo;
     }
 }
+
+// Given a string s, check if it can be constructed by taking a substring of it
+// and appending multiple copies of the substring together.
+
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+        int n = s.length();
+        for (int i = 1; i < n; i++) {
+            if (s.length() % i == 0) {
+                if (s.substring(0, s.length() - i).equals(s.substring(i))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
