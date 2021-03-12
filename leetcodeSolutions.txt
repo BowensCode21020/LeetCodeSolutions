@@ -767,3 +767,55 @@ class Solution {
     
     }
 }
+
+// Assume you are an awesome parent and want to give your children some cookies. 
+// But, you should give each child at most one cookie.
+
+// Each child i has a greed factor g[i], which is the minimum size of a cookie 
+// that the child will be content with; 
+
+// and each cookie j has a size s[j]. If s[j] >= g[i], 
+// we can assign the cookie j to the child i, and the child i will be content. 
+
+// Your goal is to maximize the number of your content children and output the 
+// maximum number.
+
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        for (int i = 0; i < g.length; i++) {
+            for (int k = i + 1; k < g.length; k++) {
+                int countOne = 0;
+                if (g[i] > g[k]) {
+                    countOne = g[i];
+                    g[i] = g[k];
+                    g[k] = countOne;
+                }
+
+            }    
+        }
+        
+        for (int j = 0; j < s.length; j++) {
+            for(int l = j + 1; l < s.length; l++) {
+                int countTwo = 0;
+                if (s[j] > s[l]) {
+                    countTwo = s[j];
+                    s[j] = s[l];
+                    s[l] = countTwo;
+                }
+            }
+        }
+        
+        int pointGreed = 0;
+        int pointSize = 0;
+        
+        while (pointSize < s.length && pointGreed < g.length) {
+            if (g[pointGreed] <= s[pointSize]) {
+                pointGreed++;
+                pointSize++;
+            } else {
+                pointSize++;
+            }
+        }
+        return pointGreed;
+    }
+}
