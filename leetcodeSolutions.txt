@@ -845,3 +845,37 @@ class Solution {
         return max3 == null ? max1 : max3;
 }
 }
+
+// Remove Non Numbers
+// In this problem you will be given a string. 
+// You will need to remove all the non numbers from the string. 
+// You will then need to multiply it by the length of the original string.
+
+//the_string = "19fe8 hxmi5"
+//the_string_only_numbers = "1985"
+//the_number = 1985
+//the_answer = 21835
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter a random number of things, "
+				+ "make sure to include numbers: ");
+		String str = in.nextLine();
+		System.out.println("The answer : " + findNumbers(str));
+	}
+	
+	public final static int[] NUM = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+	public static int findNumbers(String str) {
+		if (str == null || str.length() < 1) {
+			return 0;
+		}
+		int i = Integer.parseInt(str.replaceAll("\\D", ""));
+		int len = str.length();
+		
+		int res = i * len;
+		return res;
+	}
+
+}
