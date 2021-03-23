@@ -1000,3 +1000,17 @@ class Solution {
         return hold;
     }
 }
+
+class Solution {
+    public boolean isPalindrome(int x) {
+    if (x < 0) return false;
+    int d = (int) Math.log10(x) + 1;
+    int t = (int) Math.pow(10, d - 1);
+    for (int i = 0; i < d / 2; i++) {
+        if (x / t != x % 10) return false;
+        x = (x - x / t * t) / 10;
+        t /= 100;
+    }
+    return true;
+}
+}
